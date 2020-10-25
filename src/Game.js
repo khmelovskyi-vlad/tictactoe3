@@ -172,7 +172,7 @@ export default class Game extends React.Component {
 
 
 
-  //----------------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------------
   render() {
     return (
       <section className="row flex-column align-items-center m-0 mainContainer" id = "mainContainer">
