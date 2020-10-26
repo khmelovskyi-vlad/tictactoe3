@@ -3,13 +3,8 @@ import Input from "./Input"
 import PlayerMatchesElement from "./PlayerMatchesElement"
 
 export default class PlayerWins extends React.Component{
-  createPlayerMatches() {
-    
-  }
-  
   render() {
     const classList = ["row", "flex-column", "m-3", "p-3", this.props.display ? "d-inline" : "d-none"]
-    console.log(this.props.playerMatches);
     let counter = 0;
     const playerMatchesElements = this.props.playerMatches === null ? [] : this.props.playerMatches.map(
       playerMatches => <PlayerMatchesElement

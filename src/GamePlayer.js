@@ -12,11 +12,4 @@ export default class GamePlayer extends Player {
       }
       return new GamePlayer(playerName, games, figure, []);
     }
-    createPlayerElement(text) {
-      let playerDiv = document.createElement("div");
-      let playerP = document.createElement("p");
-      playerP.textContent = `${text} ${this.name}`; //game.gamePlayer1.name
-      playerDiv.appendChild(playerP);
-      return playerDiv;
-    }
 }

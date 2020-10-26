@@ -7,7 +7,7 @@ export default class StartGameForm extends React.Component{
     return (
       <div className={classList.join(" ")}
         style={{ border: "solid", borderRadius: "20px" }}>
-        <Input type="submit" class="m-1" value="start game" id="startGameInput"/>
+        <Input type="submit" class="m-1" value="start game" id="startGameInput" onClick={this.props.onClick}/>
       </div>
     )
   }

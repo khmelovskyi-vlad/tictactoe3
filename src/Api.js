@@ -1,5 +1,8 @@
 // import React from "react"
-import { HubConnectionBuilder, HttpTransportType, LogLevel } from "@aspnet/signalr"
+// import { HubConnectionBuilder, HttpTransportType, LogLevel } from "@aspnet/signalr"
+// import * as signalR from "@aspnet/signalr"
+
+import * as signalR from "@microsoft/signalr"
 // export default class Api extends React.Component{
 //   // constructor(props) {
 //   //   super(props)
@@ -10,13 +13,13 @@ export default class Api {
       this.valueConnection = this.createConnection(accessToken);
   }
   createConnection(accessToken) {
-    const connection = new HubConnectionBuilder()
+    let connection = new signalR.HubConnectionBuilder()
       .withUrl("https://localhost:6001/tic_tac_toehub", {
         skipNegotiation: true,
-        transport: HttpTransportType.WebSockets,
+        transport: signalR.HttpTransportType.WebSockets,
         accessTokenFactory: () => accessToken
       })
-      .configureLogging(LogLevel.Information)
+      .configureLogging(signalR.LogLevel.Information)
       .build();
     connection.serverTimeoutInMilliseconds = 120000;
     return connection;
@@ -30,13 +33,20 @@ export default class Api {
   }
   async start() {
       await this.valueConnection.start().catch(function (e) {
-          console.log(e);
+    });;
+  }
+  async stop(groupName) {
+      this.leaveGroup(groupName);
+      await this.valueConnection.stop().catch(function (e) {
     });;
   }
   receiveMessage() {
       this.valueConnection.on("ReceiveMessage", function (message) {
           console.log(message);
     })
+  }
+  leaveGroup(groupName) {
+      this.valueConnection.invoke("LeaveGroup", groupName);
   }
   startGameAsPlayer1(startGame, player1Name, groupName, connector) {
       this.valueConnection.on("StartGameAsPlayer1", function (player2Name) {

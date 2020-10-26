@@ -1,5 +1,6 @@
 import React from "react"
 import DontTouch from "./DontTouch";
+import PTextCenter from "./PTextCenter";
 
 export default class Congratulations extends React.Component{
   render() {
@@ -7,7 +8,9 @@ export default class Congratulations extends React.Component{
     return (
       <div className={classList.join(" ")}
         style={{ border: "solid", borderRadius: "20px" }}>
-        <DontTouch/>
+        <PTextCenter value={`Player ${this.props.wonPlayerName} won`}/>
+        <PTextCenter value="CONGRATULATIONS!!"/>
+        <DontTouch onClickContinuePlay={this.props.onClickContinuePlay} onClickNewGame={this.props.onClickNewGame}/>
       </div>
     )
   }

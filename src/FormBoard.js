@@ -1,4 +1,5 @@
 import React from "react"
+import BadData from "./BadData";
 import FormBoardItem from "./FormBoardItem"
 import Input from "./Input"
 
@@ -9,6 +10,7 @@ export default class FormBoard extends React.Component{
       <div
         className={classList.join(" ")}
         style={{ border: "solid", borderRadius: "20px" }}>
+        <BadData display={this.props.displayBadInput}/>
         <form onSubmit={this.props.onSubmitAllPlayers}>
           <FormBoardItem
             inputType="submit"
